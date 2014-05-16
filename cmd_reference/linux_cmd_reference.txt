@@ -1,0 +1,5 @@
+
+
+替换指定路径下文件内的指定字符串
+find ./ -name entries | xargs perl -pi -e 's|OldString|NewString|g' 
+
