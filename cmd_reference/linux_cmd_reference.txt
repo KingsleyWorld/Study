@@ -1,5 +1,15 @@
 
 
-替换指定路径下文件内的指定字符串
-find ./ -name entries | xargs perl -pi -e 's|OldString|NewString|g' 
+1. 清除linux缓存
+   To use /proc/sys/vm/drop_caches, just echo a number to it.
+ [1] To free pagecache:
+    $echo 1 > /proc/sys/vm/drop_caches
+ [2] To free dentries and inodes:
+    $echo 2 > /proc/sys/vm/drop_caches
+ [3] To free pagecache, dentries and inodes:
+    $echo 3 > /proc/sys/vm/drop_caches
+
+2. find | xargs
+ [1] 替换指定路径下文件内的指定字符串
+    $find ./ -name entries | xargs perl -pi -e 's|OldString|NewString|g' 
 
