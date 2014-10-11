@@ -13,3 +13,7 @@
  [1] 替换指定路径下文件内的指定字符串
     $find ./ -name entries | xargs perl -pi -e 's|OldString|NewString|g' 
 
+3. nat
+    $echo 1 > /proc/sys/net/ipv4/ip_forward
+    $iptables -t nat -A POSTROUTING -s 172.16.93.0/24  -j SNAT --to-source :192.168.75.75
+    $route add -net 192.168.75.0/24 gw 10.10.75.30
