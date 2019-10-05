@@ -11,7 +11,7 @@
 
 2. find | xargs
  [1] 替换指定路径下文件内的指定字符串
-    $ find ./ -name entries | xargs perl -pi -e 's|OldString|NewString|g' 
+    $ find ./ -name entries | xargs perl -pi -e 's|OldString|NewString|g'
 
 3. nat
     $ echo 1 > /proc/sys/net/ipv4/ip_forward
@@ -20,8 +20,11 @@
 
 4. cpulimit
 	限制进程名,比如将httpd这个进程名的CPU限制在40%
-	$ cpulimit --exe httpd --limit 40 
+	$ cpulimit --exe httpd --limit 40
 	$ cpulimit --exe /usr/local/bin/httpd --limit 40
-	
+
 	将pid为2960的进程的CPU限制在55%
 	$ cpulimit --pid 2960 --limit 55
+
+  自动限制当前进程使用CPU超过20%的进程,将他限制为10%
+  $ cpulimit --pid `ps aux|awk '{if($3 > 20) print $2}'` --limit 10
